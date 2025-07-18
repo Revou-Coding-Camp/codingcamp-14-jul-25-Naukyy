@@ -1,95 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yama Company</title>
-
-    <!-- CSS External Link -->
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>My Website</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="icon" href="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/a32f81155cd0d4f16d36aef74f7d2644.png" type="image/png">
 </head>
-
 <body>
-    <!-- Header Content with Tailwind CSS -->
-    <header class="flex justify-between items-center p-[8px] bg-gray-200">
-        <!-- Logo Icon -->
-        <div class="h-16 w-16 bg-[url(https://picsum.photos/200)] rounded-full bg-center bg-cover"></div>
 
-        <nav class="flex">
-            <a class="border rounded-[4px] py-[4px] px-[8px] text-decoration-none" href="#home-page">Home</a>
-            <a class="border rounded-[4px] py-[4px] px-[8px] text-decoration-none" href="#our-profile">Our Profile</a>
-            <a class="border rounded-[4px] py-[4px] px-[8px] text-decoration-none" href="#message-us">Message Us</a>
-        </nav>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/a32f81155cd0d4f16d36aef74f7d2644.png" alt="Logo Perusahaan" class="logo-img">
+                </a>
+            </div>
+
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav" class="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#profile" class="nav-link">Our Profile</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#message-us" class="nav-link">Message Us</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-
-    <!-- Main Content -->
     <main>
-        <!-- Home Content -->
-        <section id="home-page">
-            <header>
-                <h1 class="text-2xl font-bold text-center my-4">Welcome <span id="welcome-user">[User]</span> to Our
-                    Website
-                </h1>
-            </header>
-
-            <div>
-                <p class="text-center">This is the home page content. Here you can find various information about our
-                    services.</p>
-
-                <div class="banner-img"></div>
+        <section id="home" class="page-section active">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h2 id="welcome-greeting" class="welcome-text">Hi, Welcome To Website</h2>
+                    <p class="welcome-subtitle">Ini adalah website Mini Project Revou</p>
+                </div>
+            </div>
+            
+            <div class="headquarters container">
+                <h2 class="section-title">Our Headquarter</h2>
+                <div class="hq-locations">
+                    <div class="location">
+                        <div class="circle">
+                            <img src="https://www.pemburuombak.com/media/k2/items/cache/1d74984588d9effd2a11e9255005a86c_XL.jpg" alt="Jakarta HQ">
+                        </div>
+                        <p>Jakarta</p>
+                    </div>
+                    <div class="location">
+                        <div class="circle">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZhUfh6NQML81nyFDSwCGEhJTMGC8gT5rYnQ&s" alt="Pontianak HQ">
+                        </div>
+                        <p>Pontianak</p>
+                    </div>
+                    <div class="location">
+                        <div class="circle">
+                            <img src="https://img.inews.co.id/media/1200/files/inews_new/2023/06/06/Julukan_kota_Jogja.jpg" alt="Yogyakarta HQ">
+                        </div>
+                        <p>Yogyakarta</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <hr />
-
-        <!-- Our Profile Content -->
-        <section id="our-profile">
-            <header>
-                <h2 class="text-xl font-semibold text-center my-4">Our Profile</h2>
-            </header>
-
-            <article>
-                <p class="text-center">We are a team of dedicated professionals committed to providing the best services
-                    possible. Our profile includes our mission, vision, and values.</p>
-            </article>
+        <section id="profile" class="page-section container">
+            <div class="banner">
+                <h1>Profil Perusahaan</h1>
+            </div>
+            <div class="profile-content">
+                <div class="profile-card">
+                    <h3>Tentang Perusahaan</h3>
+                    <p>RevoU adalah platform pendidikan daring terkemuka di Indonesia yang fokus pada pengembangan keterampilan digital dan teknologi melalui program bootcamp intensif. Sejak didirikan pada tahun 2019, RevoU telah membantu lebih dari 10.000 individu memulai, beralih, atau mengembangkan karier mereka di bidang yang sangat diminati seperti Digital Marketing, Data Analytics, dan Software Engineering. Program-program di RevoU dirancang dengan pendekatan berbasis proyek nyata, didukung oleh mentor profesional dari perusahaan-perusahaan terkemuka di Asia Tenggara, serta kurikulum yang relevan dengan kebutuhan industri . Selain itu, RevoU juga menawarkan dukungan karier melalui bimbingan, persiapan wawancara, dan kesempatan magang, serta fleksibilitas pembayaran melalui opsi "Study Now, Pay Later" untuk memudahkan akses bagi peserta.</p>
+                </div>
+                <div class="profile-card">
+                    <h3>Visi & Misi</h3>
+                    <p><strong>Visi:</strong> Menjadi platform pendidikan tinggi terkemuka di Asia Tenggara yang menyediakan akses pendidikan berkualitas tinggi dan relevan dengan kebutuhan industri, guna memberdayakan individu untuk mencapai potensi profesional mereka secara maksimal.</p>
+                    <p><strong>Misi:</strong></p>
+                    <ul>
+                        <li>Memberikan pendidikan berkualitas tinggi yang sesuai dengan kebutuhan industri.</li>
+                        <li>Membantu siswa mengubah karier mereka melalui pelatihan praktis.</li>
+                        <li>Memberdayakan tim RevoU untuk berkembang bersama dalam perusahaan.</li>
+                        <li>Menciptakan peluang yang bermanfaat bagi setiap individu yang terlibat.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="portfolio" class="page-section container">
+            <h2 class="section-title">Portfolio Saya</h2>
+            <p class="portfolio-description">Pilih dan jelajahi proyek kami yang menakjubkan, yang menggabungkan teknologi dengan desain futuristik dan fungsionalitas.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://img.freepik.com/premium-photo/drums-percussion-instruments-ai-generate-ai-generate_250484-11110.jpg" alt="Drum Machine">
+                    <div class="portfolio-item-content">
+                        <h3>Drum Machine</h3>
+                        <p>Drum machine yang menciptakan ritme elektronik yang presisi.</p>
+                        <a href="https://codepen.io/Kalbar-Skw/full/empYEOG" class="btn">Lihat Proyek</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://img.freepik.com/premium-vector/money-calculator-neon-light-sign-vector-glowing-bright-icon-money-calculator-sign-transparent-symbo_894188-2548.jpg" alt="Calculator">
+                    <div class="portfolio-item-content">
+                        <h3>Calculator</h3>
+                        <p>Calculator mempermudah perhitungan cepat dan akurat.</p>
+                        <a href="https://codepen.io/Kalbar-Skw/full/gbaOXjy" class="btn">Lihat Proyek</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://t4.ftcdn.net/jpg/15/31/96/91/360_F_1531969108_9alKGOpT2m5ejsH5ofEIY3DfXN21YePa.jpg" alt="Timer 25 + 5">
+                    <div class="portfolio-item-content">
+                        <h3>Timer 25 + 5</h3>
+                        <p>Timer fokus 25 menit, istirahat 5 menit.</p>
+                        <a href="https://codepen.io/Kalbar-Skw/full/PwPoaaQ" class="btn">Lihat Proyek</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <hr />
-
-        <!-- Message Us Content -->
-        <section id="message-us">
-            <header>
-                <h2 class="text-xl font-semibold text-center my-4">Message Us</h2>
-            </header>
-
-            <form>
-
-                <div class="flex flex-col items-center">
-                    <label for="name-input" class="mb-2">Name:</label>
-                    <input type="text" id="name-input" name="name" class="border rounded p-2 mb-4 w-1/2">
-
-                    <button onclick="validateForm();" type="button"
-                        class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Send
-                        Message</button>
+        <section id="message-us" class="page-section container">
+            <h2 class="section-title">Message Us</h2>
+            <div class="content-wrapper">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal-lahir">Tanggal Lahir</label>
+                        <input type="date" id="tanggal-lahir" name="tanggal-lahir" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jenis-kelamin">Jenis Kelamin</label>
+                        <select id="jenis-kelamin" name="jenis-kelamin" required>
+                            <option value="">-- Pilih --</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon">Nomor Telepon</label>
+                        <input type="tel" id="telepon" name="telepon" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan</label>
+                        <textarea id="pesan" name="pesan" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+                <div id="form-output">
+                    <h3>Submitted Data:</h3>
+                    <p id="output-content">Data yang Anda kirimkan akan muncul di sini.</p>
                 </div>
-            </form>
-
-            <div id="message-output" class="text-center mt-4">Result:</div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer Content -->
-    <footer>
-        <p class="text-center text-gray-600 py-4">© 2025 Yama Company. All rights reserved.</p>
+    <footer class="main-footer">
+        <p>Created By Naufal Zaky Ramadhan</p>
     </footer>
 
-    <!-- JavaScript External Link -->
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
-
 </html>

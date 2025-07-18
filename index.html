@@ -4,62 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/a32f81155cd0d4f16d36aef74f7d2644.png" type="image/png">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .bg-grid-pattern {
+            background: 
+                linear-gradient(rgba(5, 217, 232, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(5, 217, 232, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(13, 2, 33, 0.9) 0%,
+                rgba(255, 42, 109, 0.3) 50%,
+                rgba(13, 2, 33, 0.9) 100%
+            );
+            z-index: 1;
+        }
+        
+        .portfolio-item-content {
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-item-content {
+            transform: translateY(0);
+        }
+        
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff9d;
+            transition: width 0.3s ease;
+        }
+        
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+        
+        .profile-card ul li::before {
+            content: '▹';
+            color: #05d9e8;
+            margin-right: 10px;
+        }
 
-    <header class="main-header">
-        <div class="container">
+        /* Added styles for form output */
+        .submitted-item {
+            margin-bottom: 8px;
+        }
+        .submitted-item .label {
+            color: #00ff9d;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 120px;
+        }
+        hr {
+            border-color: #ff2a6d;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body class="font-['Rajdhani'] bg-[#0d0221] text-[#f4f4f4] bg-grid-pattern min-h-screen overflow-x-hidden">
+    <!-- Header -->
+    <header class="main-header bg-[rgba(13,2,33,0.9)] h-20 sticky top-0 z-50 border-b border-[#05d9e8] backdrop-blur">
+        <div class="container max-w-6xl mx-auto px-5 h-full flex justify-between items-center">
             <div class="logo">
                 <a href="#home">
-                    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/a32f81155cd0d4f16d36aef74f7d2644.png" alt="Logo Perusahaan" class="logo-img">
+                    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/a32f81155cd0d4f16d36aef74f7d2644.png" 
+                         alt="Logo Perusahaan" 
+                         class="h-12 w-auto drop-shadow-[0_0_5px_#05d9e8] hover:drop-shadow-[0_0_10px_#ff2a6d] transition-all">
                 </a>
             </div>
 
-            <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger-menu flex flex-col justify-between w-8 h-5 bg-transparent border-none cursor-pointer z-[1001] md:hidden" 
+                    aria-label="Toggle navigation" 
+                    aria-expanded="false"
+                    id="hamburger-btn">
+                <span class="block h-1 w-full bg-[#05d9e8] transition-all"></span>
+                <span class="block h-1 w-full bg-[#05d9e8] transition-all"></span>
+                <span class="block h-1 w-full bg-[#05d9e8] transition-all"></span>
             </button>
-            <nav id="main-nav" class="main-nav">
-                <ul>
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#profile" class="nav-link">Our Profile</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#message-us" class="nav-link">Message Us</a></li>
+            
+            <nav id="main-nav" class="main-nav fixed md:static top-20 left-0 w-full md:w-auto bg-[#05010d] md:bg-transparent p-8 md:p-0 transform -translate-y-full md:transform-none transition-transform md:transition-none">
+                <ul class="flex flex-col md:flex-row gap-4 md:gap-6">
+                    <li><a href="#home" class="nav-link active text-[#f4f4f4] no-underline px-4 py-2 border border-transparent rounded font-semibold tracking-wider relative hover:text-[#00ff9d]">Home</a></li>
+                    <li><a href="#profile" class="nav-link text-[#f4f4f4] no-underline px-4 py-2 border border-transparent rounded font-semibold tracking-wider relative hover:text-[#00ff9d]">Our Profile</a></li>
+                    <li><a href="#portfolio" class="nav-link text-[#f4f4f4] no-underline px-4 py-2 border border-transparent rounded font-semibold tracking-wider relative hover:text-[#00ff9d]">Portfolio</a></li>
+                    <li><a href="#message-us" class="nav-link text-[#f4f4f4] no-underline px-4 py-2 border border-transparent rounded font-semibold tracking-wider relative hover:text-[#00ff9d]">Message Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Home Section -->
         <section id="home" class="page-section active">
-            <div class="hero-banner">
-                <div class="hero-content">
-                    <h2 id="welcome-greeting" class="welcome-text">Hi, Welcome To Website</h2>
-                    <p class="welcome-subtitle">Ini adalah website Mini Project Revou</p>
+            <div class="hero-banner h-[80vh] min-h-[500px] flex justify-center items-center text-center relative overflow-hidden">
+                <div class="hero-content relative z-10 animate-fade-in-up">
+                    <h2 id="welcome-greeting" class="welcome-text font-['Orbitron'] text-5xl md:text-6xl font-bold text-[#00ff9d] [text-shadow:_0_0_10px_#00ff9d,_0_0_20px_#00ff9d] tracking-[5px] mb-4">Hi, Welcome To Website</h2>
+                    <p class="welcome-subtitle text-xl md:text-2xl text-[#05d9e8] [text-shadow:_0_0_5px_#05d9e8] tracking-[3px]">Ini adalah website Mini Project Revou</p>
                 </div>
             </div>
             
-            <div class="headquarters container">
-                <h2 class="section-title">Our Headquarter</h2>
-                <div class="hq-locations">
-                    <div class="location">
-                        <div class="circle">
-                            <img src="https://www.pemburuombak.com/media/k2/items/cache/1d74984588d9effd2a11e9255005a86c_XL.jpg" alt="Jakarta HQ">
+            <div class="headquarters container max-w-6xl mx-auto px-5 py-16">
+                <h2 class="section-title font-['Orbitron'] text-3xl md:text-4xl text-center mb-12 text-[#ff2a6d] [text-shadow:_0_0_5px_#ff2a6d] uppercase tracking-[2px]">Our Headquarter</h2>
+                <div class="hq-locations flex justify-center gap-8 md:gap-12 flex-wrap">
+                    <div class="location text-center">
+                        <div class="circle w-32 h-32 md:w-36 md:h-36 rounded-full border-4 border-[#05d9e8] overflow-hidden mx-auto mb-4 shadow-[0_0_15px_#05d9e8] hover:scale-105 hover:shadow-[0_0_25px_#ff2a6d] hover:border-[#ff2a6d] transition-all">
+                            <img src="https://www.pemburuombak.com/media/k2/items/cache/1d74984588d9effd2a11e9255005a86c_XL.jpg" alt="Jakarta HQ" class="w-full h-full object-cover">
                         </div>
                         <p>Jakarta</p>
                     </div>
-                    <div class="location">
-                        <div class="circle">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZhUfh6NQML81nyFDSwCGEhJTMGC8gT5rYnQ&s" alt="Pontianak HQ">
+                    <div class="location text-center">
+                        <div class="circle w-32 h-32 md:w-36 md:h-36 rounded-full border-4 border-[#05d9e8] overflow-hidden mx-auto mb-4 shadow-[0_0_15px_#05d9e8] hover:scale-105 hover:shadow-[0_0_25px_#ff2a6d] hover:border-[#ff2a6d] transition-all">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZhUfh6NQML81nyFDSwCGEhJTMGC8gT5rYnQ&s" alt="Pontianak HQ" class="w-full h-full object-cover">
                         </div>
                         <p>Pontianak</p>
                     </div>
-                    <div class="location">
-                        <div class="circle">
-                            <img src="https://img.inews.co.id/media/1200/files/inews_new/2023/06/06/Julukan_kota_Jogja.jpg" alt="Yogyakarta HQ">
+                    <div class="location text-center">
+                        <div class="circle w-32 h-32 md:w-36 md:h-36 rounded-full border-4 border-[#05d9e8] overflow-hidden mx-auto mb-4 shadow-[0_0_15px_#05d9e8] hover:scale-105 hover:shadow-[0_0_25px_#ff2a6d] hover:border-[#ff2a6d] transition-all">
+                            <img src="https://img.inews.co.id/media/1200/files/inews_new/2023/06/06/Julukan_kota_Jogja.jpg" alt="Yogyakarta HQ" class="w-full h-full object-cover">
                         </div>
                         <p>Yogyakarta</p>
                     </div>
@@ -67,106 +160,289 @@
             </div>
         </section>
 
-        <section id="profile" class="page-section container">
-            <div class="banner">
-                <h1>Profil Perusahaan</h1>
+        <!-- Profile Section -->
+        <section id="profile" class="page-section container max-w-6xl mx-auto px-5 py-16">
+            <div class="banner h-72 flex justify-center items-center bg-gradient-to-r from-[#0d0221] to-[#d300c5] mb-12 relative overflow-hidden">
+                <h1 class="font-['Orbitron'] text-4xl md:text-5xl text-[#05d9e8] [text-shadow:_0_0_10px_#05d9e8] uppercase tracking-[2px]">Profil Perusahaan</h1>
             </div>
-            <div class="profile-content">
-                <div class="profile-card">
-                    <h3>Tentang Perusahaan</h3>
-                    <p>RevoU adalah platform pendidikan daring terkemuka di Indonesia yang fokus pada pengembangan keterampilan digital dan teknologi melalui program bootcamp intensif. Sejak didirikan pada tahun 2019, RevoU telah membantu lebih dari 10.000 individu memulai, beralih, atau mengembangkan karier mereka di bidang yang sangat diminati seperti Digital Marketing, Data Analytics, dan Software Engineering. Program-program di RevoU dirancang dengan pendekatan berbasis proyek nyata, didukung oleh mentor profesional dari perusahaan-perusahaan terkemuka di Asia Tenggara, serta kurikulum yang relevan dengan kebutuhan industri . Selain itu, RevoU juga menawarkan dukungan karier melalui bimbingan, persiapan wawancara, dan kesempatan magang, serta fleksibilitas pembayaran melalui opsi "Study Now, Pay Later" untuk memudahkan akses bagi peserta.</p>
+            <div class="profile-content grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="profile-card bg-[rgba(5,1,13,0.7)] p-8 rounded border-l-4 border-[#00ff9d] shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#ff2a6d] transition-all">
+                    <h3 class="font-['Orbitron'] text-xl text-[#00ff9d] mb-4 pb-2 border-b border-[#d300c5] uppercase tracking-[2px]">Tentang Perusahaan</h3>
+                    <p class="text-[#b8b8b8] mb-4">RevoU adalah platform pendidikan daring terkemuka di Indonesia yang fokus pada pengembangan keterampilan digital dan teknologi melalui program bootcamp intensif. Sejak didirikan pada tahun 2019, RevoU telah membantu lebih dari 10.000 individu memulai, beralih, atau mengembangkan karier mereka di bidang yang sangat diminati seperti Digital Marketing, Data Analytics, dan Software Engineering. Program-program di RevoU dirancang dengan pendekatan berbasis proyek nyata, didukung oleh mentor profesional dari perusahaan-perusahaan terkemuka di Asia Tenggara, serta kurikulum yang relevan dengan kebutuhan industri . Selain itu, RevoU juga menawarkan dukungan karier melalui bimbingan, persiapan wawancara, dan kesempatan magang, serta fleksibilitas pembayaran melalui opsi "Study Now, Pay Later" untuk memudahkan acess bagi peserta.</p>
                 </div>
-                <div class="profile-card">
-                    <h3>Visi & Misi</h3>
-                    <p><strong>Visi:</strong> Menjadi platform pendidikan tinggi terkemuka di Asia Tenggara yang menyediakan akses pendidikan berkualitas tinggi dan relevan dengan kebutuhan industri, guna memberdayakan individu untuk mencapai potensi profesional mereka secara maksimal.</p>
-                    <p><strong>Misi:</strong></p>
-                    <ul>
-                        <li>Memberikan pendidikan berkualitas tinggi yang sesuai dengan kebutuhan industri.</li>
-                        <li>Membantu siswa mengubah karier mereka melalui pelatihan praktis.</li>
-                        <li>Memberdayakan tim RevoU untuk berkembang bersama dalam perusahaan.</li>
-                        <li>Menciptakan peluang yang bermanfaat bagi setiap individu yang terlibat.</li>
+                <div class="profile-card bg-[rgba(5,1,13,0.7)] p-8 rounded border-l-4 border-[#00ff9d] shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#ff2a6d] transition-all">
+                    <h3 class="font-['Orbitron'] text-xl text-[#00ff9d] mb-4 pb-2 border-b border-[#d300c5] uppercase tracking-[2px]">Visi & Misi</h3>
+                    <p class="text-[#b8b8b8] mb-4"><strong>Visi:</strong> Menjadi platform pendidikan tinggi terkemuka di Asia Tenggara yang menyediakan akses pendidikan berkualitas tinggi dan relevan dengan kebutuhan industri, guna memberdayakan individu untuk mencapai potensi profesional mereka secara maksimal.</p>
+                    <p class="text-[#b8b8b8] mb-4"><strong>Misi:</strong></p>
+                    <ul class="list-none pl-5">
+                        <li class="text-[#b8b8b8] mb-2">Memberikan pendidikan berkualitas tinggi yang sesuai dengan kebutuhan industri.</li>
+                        <li class="text-[#b8b8b8] mb-2">Membantu siswa mengubah karier mereka melalui pelatihan praktis.</li>
+                        <li class="text-[#b8b8b8] mb-2">Memberdayakan tim RevoU untuk berkembang bersama dalam perusahaan.</li>
+                        <li class="text-[#b8b8b8] mb-2">Menciptakan peluang yang bermanfaat bagi setiap individu yang terlibat.</li>
                     </ul>
                 </div>
             </div>
         </section>
         
-        <section id="portfolio" class="page-section container">
-            <h2 class="section-title">Portfolio Saya</h2>
-            <p class="portfolio-description">Pilih dan jelajahi proyek kami yang menakjubkan, yang menggabungkan teknologi dengan desain futuristik dan fungsionalitas.</p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://img.freepik.com/premium-photo/drums-percussion-instruments-ai-generate-ai-generate_250484-11110.jpg" alt="Drum Machine">
-                    <div class="portfolio-item-content">
-                        <h3>Drum Machine</h3>
-                        <p>Drum machine yang menciptakan ritme elektronik yang presisi.</p>
-                        <a href="https://codepen.io/Kalbar-Skw/full/empYEOG" class="btn">Lihat Proyek</a>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="page-section container max-w-6xl mx-auto px-5 py-16">
+            <h2 class="section-title font-['Orbitron'] text-3xl md:text-4xl text-center mb-12 text-[#ff2a6d] [text-shadow:_0_0_5px_#ff2a6d] uppercase tracking-[2px]">Portfolio Saya</h2>
+            <p class="portfolio-description text-center max-w-3xl mx-auto mb-12 text-[#b8b8b8]">Pilih dan jelajahi proyek kami yang menakjubkan, yang menggabungkan teknologi dengan desain futuristik dan fungsionalitas.</p>
+            <div class="portfolio-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="portfolio-item h-80 rounded overflow-hidden border border-[#ff2a6d] relative group">
+                    <img src="https://img.freepik.com/premium-photo/drums-percussion-instruments-ai-generate-ai-generate_250484-11110.jpg" 
+                         alt="Drum Machine" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="portfolio-item-content absolute bottom-0 left-0 w-full p-6 bg-black/80">
+                        <h3 class="font-['Orbitron'] text-xl text-[#00ff9d] mb-2 uppercase tracking-[2px]">Drum Machine</h3>
+                        <p class="text-[#b8b8b8] mb-4">Drum machine yang menciptakan ritme elektronik yang presisi.</p>
+                        <a href="https://codepen.io/Kalbar-Skw/full/empYEOG" class="btn inline-block px-4 py-2 bg-[#ff2a6d] text-[#0d0221] no-underline rounded font-bold hover:bg-[#00ff9d] transition-all">Lihat Proyek</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://img.freepik.com/premium-vector/money-calculator-neon-light-sign-vector-glowing-bright-icon-money-calculator-sign-transparent-symbo_894188-2548.jpg" alt="Calculator">
-                    <div class="portfolio-item-content">
-                        <h3>Calculator</h3>
-                        <p>Calculator mempermudah perhitungan cepat dan akurat.</p>
-                        <a href="https://codepen.io/Kalbar-Skw/full/gbaOXjy" class="btn">Lihat Proyek</a>
+                <div class="portfolio-item h-80 rounded overflow-hidden border border-[#ff2a6d] relative group">
+                    <img src="https://img.freepik.com/premium-vector/money-calculator-neon-light-sign-vector-glowing-bright-icon-money-calculator-sign-transparent-symbo_894188-2548.jpg" 
+                         alt="Calculator" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="portfolio-item-content absolute bottom-0 left-0 w-full p-6 bg-black/80">
+                        <h3 class="font-['Orbitron'] text-xl text-[#00ff9d] mb-2 uppercase tracking-[2px]">Calculator</h3>
+                        <p class="text-[#b8b8b8] mb-4">Calculator mempermudah perhitungan cepat dan akurat.</p>
+                        <a href="https://codepen.io/Kalbar-Skw/full/gbaOXjy" class="btn inline-block px-4 py-2 bg-[#ff2a6d] text-[#0d0221] no-underline rounded font-bold hover:bg-[#00ff9d] transition-all">Lihat Proyek</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://t4.ftcdn.net/jpg/15/31/96/91/360_F_1531969108_9alKGOpT2m5ejsH5ofEIY3DfXN21YePa.jpg" alt="Timer 25 + 5">
-                    <div class="portfolio-item-content">
-                        <h3>Timer 25 + 5</h3>
-                        <p>Timer fokus 25 menit, istirahat 5 menit.</p>
-                        <a href="https://codepen.io/Kalbar-Skw/full/PwPoaaQ" class="btn">Lihat Proyek</a>
+                <div class="portfolio-item h-80 rounded overflow-hidden border border-[#ff2a6d] relative group">
+                    <img src="https://t4.ftcdn.net/jpg/15/31/96/91/360_F_1531969108_9alKGOpT2m5ejsH5ofEIY3DfXN21YePa.jpg" 
+                         alt="Timer 25 + 5" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="portfolio-item-content absolute bottom-0 left-0 w-full p-6 bg-black/80">
+                        <h3 class="font-['Orbitron'] text-xl text-[#00ff9d] mb-2 uppercase tracking-[2px]">Timer 25 + 5</h3>
+                        <p class="text-[#b8b8b8] mb-4">Timer fokus 25 menit, istirahat 5 menit.</p>
+                        <a href="https://codepen.io/Kalbar-Skw/full/PwPoaaQ" class="btn inline-block px-4 py-2 bg-[#ff2a6d] text-[#0d0221] no-underline rounded font-bold hover:bg-[#00ff9d] transition-all">Lihat Proyek</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="message-us" class="page-section container">
-            <h2 class="section-title">Message Us</h2>
-            <div class="content-wrapper">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" id="nama" name="nama" required>
+        <!-- Message Us Section -->
+        <section id="message-us" class="page-section container max-w-6xl mx-auto px-5 py-16">
+            <h2 class="section-title font-['Orbitron'] text-3xl md:text-4xl text-center mb-12 text-[#ff2a6d] [text-shadow:_0_0_5px_#ff2a6d] uppercase tracking-[2px]">Message Us</h2>
+            <div class="content-wrapper grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <form id="contact-form" class="bg-[rgba(5,1,13,0.7)] p-8 rounded border border-[#05d9e8]">
+                    <div class="form-group mb-6">
+                        <label for="nama" class="block mb-2 text-[#00ff9d]">Nama</label>
+                        <input type="text" id="nama" name="nama" required 
+                               class="w-full p-3 bg-white/10 border border-[#d300c5] text-[#f4f4f4] rounded focus:outline-none focus:border-[#00ff9d] focus:shadow-[0_0_10px_#00ff9d]">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="form-group mb-6">
+                        <label for="email" class="block mb-2 text-[#00ff9d]">Email</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full p-3 bg-white/10 border border-[#d300c5] text-[#f4f4f4] rounded focus:outline-none focus:border-[#00ff9d] focus:shadow-[0_0_10px_#00ff9d]">
                     </div>
-                    <div class="form-group">
-                        <label for="tanggal-lahir">Tanggal Lahir</label>
-                        <input type="date" id="tanggal-lahir" name="tanggal-lahir" required>
+                    <div class="form-group mb-6">
+                        <label for="tanggal-lahir" class="block mb-2 text-[#00ff9d]">Tanggal Lahir</label>
+                        <input type="date" id="tanggal-lahir" name="tanggal-lahir" required 
+                               class="w-full p-3 bg-white/10 border border-[#d300c5] text-[#f4f4f4] rounded focus:outline-none focus:border-[#00ff9d] focus:shadow-[0_0_10px_#00ff9d]">
                     </div>
-                    <div class="form-group">
-                        <label for="jenis-kelamin">Jenis Kelamin</label>
-                        <select id="jenis-kelamin" name="jenis-kelamin" required>
+                    <div class="form-group mb-6">
+                        <label for="jenis-kelamin" class="block mb-2 text-[#00ff9d]">Jenis Kelamin</label>
+                        <select id="jenis-kelamin" name="jenis-kelamin" required 
+                                class="w-full p-3 bg-white/10 border border-[#d300c5] text-[#f4f4f4] rounded focus:outline-none focus:border-[#00ff9d] focus:shadow-[0_0_10px_#00ff9d]">
                             <option value="">-- Pilih --</option>
                             <option value="Laki-laki">Laki-laki</option>
                             <option value="Perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="telepon">Nomor Telepon</label>
-                        <input type="tel" id="telepon" name="telepon" required>
+                    <div class="form-group mb-6">
+                        <label for="telepon" class="block mb-2 text-[#00ff9d]">Nomor Telepon</label>
+                        <input type="tel" id="telepon" name="telepon" required 
+                               class="w-full p-3 bg-white/10 border border-[#d300c5] text-[#f4f4f4] rounded focus:outline-none focus:border-[#00ff9d] focus:shadow-[0_0_10px_#00ff9d]">
                     </div>
-                    <div class="form-group">
-                        <label for="pesan">Pesan</label>
-                        <textarea id="pesan" name="pesan" rows="5" required></textarea>
+                    <div class="form-group mb-6">
+                        <label for="pesan" class="block mb-2 text-[#00ff9d]">Pesan</label>
+                        <textarea id="pesan" name="pesan" rows="5" required 
+                                  class="w-full p-3 bg-white/10 border border-[#d300c5] text-[#f4f4f4] rounded focus:outline-none focus:border-[#00ff9d] focus:shadow-[0_0_10px_#00ff9d]"></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="submit" 
+                            class="submit-btn w-full py-3 bg-[#ff2a6d] text-[#0d0221] border-none font-['Orbitron'] font-bold uppercase tracking-wider cursor-pointer hover:bg-[#00ff9d] transition-all">
+                        Submit
+                    </button>
                 </form>
-                <div id="form-output">
-                    <h3>Submitted Data:</h3>
-                    <p id="output-content">Data yang Anda kirimkan akan muncul di sini.</p>
+                <div id="form-output" class="bg-[rgba(5,1,13,0.7)] p-8 rounded border border-[#00ff9d]">
+                    <h3 class="font-['Orbitron'] text-xl text-[#00ff9d] mb-4 uppercase tracking-[2px]">Submitted Data:</h3>
+                    <p id="output-content" class="text-[#b8b8b8]">Data yang Anda kirimkan akan muncul di sini.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer text-center py-8 bg-[#05010d] mt-16 border-t border-[#d300c5]">
         <p>Created By Naufal Zaky Ramadhan</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mainNav = document.getElementById('main-nav');
+            
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                
+                // Toggle aria-expanded attribute
+                const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+                hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+                
+                // Toggle transform for mobile menu
+                if (mainNav.classList.contains('active')) {
+                    mainNav.style.transform = 'translateY(0)';
+                } else {
+                    mainNav.style.transform = 'translateY(-100%)';
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mainNav.classList.contains('active')) {
+                            hamburgerBtn.classList.remove('active');
+                            mainNav.classList.remove('active');
+                            hamburgerBtn.setAttribute('aria-expanded', 'false');
+                            mainNav.style.transform = 'translateY(-100%)';
+                        }
+                    }
+                });
+            });
+
+            // Pesan Selamat Datang
+            const welcomeGreeting = document.getElementById('welcome-greeting');
+            const userName = prompt("Halo! Silakan masukkan nama Anda:", "") || "";
+            if (userName) {
+                welcomeGreeting.textContent = `Hi ${userName}, Welcome To Website`;
+            }
+
+            // Update welcome greeting based on time of day
+            function updateGreeting() {
+                const hour = new Date().getHours();
+                let greeting;
+                
+                if (hour < 12) {
+                    greeting = "Good Morning";
+                } else if (hour < 18) {
+                    greeting = "Good Afternoon";
+                } else {
+                    greeting = "Good Evening";
+                }
+                
+                if (userName) {
+                    welcomeGreeting.textContent = `${greeting} ${userName}, Welcome To Website`;
+                } else {
+                    welcomeGreeting.textContent = `${greeting}, Welcome To Website`;
+                }
+            }
+            
+            // Call the function when the page loads
+            updateGreeting();
+
+            // Logika Navigasi
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Tutup menu jika terbuka saat link di klik
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        hamburgerBtn.classList.remove('active'); 
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    }
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    sections.forEach(section => {
+                        section.classList.toggle('active', section.id === targetId);
+                    });
+                });
+            });
+
+            // Validasi dan Pengiriman Formulir
+            const contactForm = document.getElementById('contact-form');
+            const outputContent = document.getElementById('output-content');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Mendapatkan nilai dari formulir
+                const nama = document.getElementById('nama').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const telepon = document.getElementById('telepon').value.trim();
+                const pesan = document.getElementById('pesan').value.trim();
+                const tanggalLahir = document.getElementById('tanggal-lahir').value;
+                const jenisKelamin = document.getElementById('jenis-kelamin').value;
+
+                // Pemeriksaan validasi dasar
+                if (!nama || !email || !telepon || !pesan || !tanggalLahir || !jenisKelamin) {
+                    alert('Harap lengkapi semua kolom.');
+                    return;
+                }
+
+                // Validasi format khusus
+                const emailRegex = /^\S+@\S+\.\S+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Format email tidak valid.');
+                    return;
+                }
+
+                if (!/^\d+$/.test(telepon)) {
+                    alert('Nomor telepon hanya boleh berisi angka.');
+                    return;
+                }
+
+                // Menampilkan data yang dikirimkan
+                const currentTime = new Date().toLocaleString('id-ID', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                outputContent.innerHTML = `
+                    <div class="submitted-item"><span class="label">Waktu:</span> ${currentTime}</div>
+                    <hr>
+                    <div class="submitted-item"><span class="label">Nama:</span> ${nama}</div>
+                    <div class="submitted-item"><span class="label">Email:</span> ${email}</div>
+                    <div class="submitted-item"><span class="label">Tanggal Lahir:</span> ${tanggalLahir}</div>
+                    <div class="submitted-item"><span class="label">Jenis Kelamin:</span> ${jenisKelamin}</div>
+                    <div class="submitted-item"><span class="label">Telepon:</span> ${telepon}</div>
+                    <div class="submitted-item"><span class="label">Pesan:</span> ${pesan}</div>
+                `;
+
+                contactForm.reset();
+                
+                alert('Pesan Anda berhasil dikirim!');
+                
+                // Scroll to the output section
+                document.getElementById('form-output').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>

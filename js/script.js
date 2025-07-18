@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Logika untuk Hamburger Menu
+    // Logika untuk Menu
     const hamburger = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('#main-nav');
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
 
-            // Tutup menu hamburger jika terbuka saat link di klik
+            // Tutup menu jika terbuka saat link di klik
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active'); 

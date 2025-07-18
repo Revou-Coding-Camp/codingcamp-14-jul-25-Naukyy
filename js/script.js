@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.setAttribute('aria-expanded', isExpanded);
     });
 
-    // Pesan Selamat Datang Dinamis
+    // Pesan Selamat Datang
     const welcomeGreeting = document.getElementById('welcome-greeting');
     const userName = prompt("Halo! Silakan masukkan nama Anda:", "") || "";
     if (userName) {

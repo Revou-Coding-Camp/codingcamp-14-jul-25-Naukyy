@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         welcomeGreeting.textContent = `Hi ${userName}, Welcome To Website`;
     }
 
-    // Logika Navigasi Satu Halaman
+    // Logika Navigasi
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
 
